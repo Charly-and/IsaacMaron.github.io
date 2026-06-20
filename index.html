@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isaac Maron — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:      #0f0f0f;
+    --surf:    #161616;
+    --surf2:   #1e1e1e;
+    --border:  #272727;
+    --text:    #e8e8e4;
+    --muted:   #7a7a76;
+    --gold:    #c8a96e;
+    --gold-dim:#7a6438;
+    --teal:    #7eb8a4;
+    --sans:    'Inter', sans-serif;
+    --mono:    'IBM Plex Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 3.5rem; height: 60px; background: rgba(15,15,15,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .logo { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .has-drop { position: relative; }
+  .drop-btn { display: flex; align-items: center; gap: 5px; cursor: default; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .drop-btn svg { width: 9px; height: 9px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.2s; }
+  .has-drop:hover .drop-btn svg { transform: rotate(180deg); }
+  .drop-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; min-width: 260px; background: var(--surf); border: 1px solid var(--border); padding: 6px 0; }
+  .has-drop:hover .drop-menu { display: block; }
+  .drop-menu a { display: flex; justify-content: space-between; align-items: center; padding: 9px 18px; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); border-left: 2px solid transparent; transition: background 0.15s, border-color 0.15s, color 0.15s; text-transform: none; letter-spacing: 0.03em; }
+  .drop-menu a:hover { background: var(--surf2); border-left-color: var(--gold); color: var(--text); }
+  .yr { font-size: 0.62rem; color: var(--gold); opacity: 0.7; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
+  .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 5rem 3.5rem; border-right: 1px solid var(--border); }
+  .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .hero-name { font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 3rem; }
+  .hero-name .surname { display: block; color: var(--gold); font-weight: 600; }
+  .hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 420px; margin-bottom: 2.5rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 0.75rem 1.5rem; transition: background 0.2s, color 0.2s; width: fit-content; }
+  .hero-cta:hover { background: var(--gold); color: #0f0f0f; }
+  .hero-right { display: flex; flex-direction: column; padding: 5rem 3.5rem; gap: 3rem; }
+
+  /* PHOTO */
+  .photo-slot { width: 100%; aspect-ratio: 3/2; background: var(--surf2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-hint { font-family: var(--mono); font-size: 0.68rem; color: var(--border); letter-spacing: 0.1em; text-align: center; line-height: 2.2; }
+
+  /* SKILLS */
+  .skill-clusters { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .cluster-label { font-family: var(--mono); font-size: 0.62rem; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.55rem; }
+  .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pill { font-size: 0.78rem; color: var(--muted); padding: 3px 10px; border: 1px solid var(--border); white-space: nowrap; }
+
+  /* SECTION HEADER */
+  .sec-head { display: flex; align-items: center; gap: 1rem; padding: 4.5rem 3.5rem 3rem; }
+  .sec-label { font-family: var(--mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
+  .sec-rule { flex: 1; height: 1px; background: var(--border); }
+
+  /* PROJECTS */
+  .projects { border-top: 1px solid var(--border); }
+  .proj { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); min-height: 520px; }
+  .proj:nth-child(even) .proj-img { order: 2; border-left: 1px solid var(--border); border-right: none; }
+  .proj:nth-child(even) .proj-content { order: 1; }
+  .proj-img { position: relative; background: var(--surf); border-right: 1px solid var(--border); overflow: hidden; }
+  .img-slot { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .img-slot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .proj:hover .img-slot img { transform: scale(1.03); }
+  .img-placeholder { font-family: var(--mono); font-size: 0.68rem; color: var(--border); letter-spacing: 0.12em; text-align: center; line-height: 2.2; }
+  .proj-num { position: absolute; bottom: 1.5rem; left: 1.5rem; font-family: var(--mono); font-size: 0.62rem; color: var(--gold); opacity: 0.35; letter-spacing: 0.1em; }
+  .proj-content { padding: 3rem 3.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1.4rem; }
+  .proj-meta { display: flex; align-items: center; gap: 12px; }
+  .cat-badge { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); padding: 3px 9px; border: 1px solid var(--teal); opacity: 0.8; }
+  .proj-yr { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); }
+  .proj-title { font-size: clamp(1.3rem, 2.2vw, 1.85rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; }
+  .proj-what { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+  .highlight { font-family: var(--mono); font-size: 0.76rem; color: var(--gold); background: rgba(200,169,110,0.06); border-left: 2px solid var(--gold); padding: 0.65rem 1rem; line-height: 1.6; }
+  .info-stack { display: flex; flex-direction: column; gap: 1rem; }
+  .info-row { padding-left: 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .info-row.obj  { border-left: 2px solid #b8be8a; }
+  .info-row.out  { border-left: 2px solid var(--teal); }
+  .info-row.tech { border-left: 2px solid #be8a8a; }
+  .info-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .info-row.obj  .info-label { color: #b8be8a; }
+  .info-row.out  .info-label { color: var(--teal); }
+  .info-row.tech .info-label { color: #be8a8a; }
+  .info-text { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool-tag { font-family: var(--mono); font-size: 0.63rem; color: var(--muted); padding: 3px 9px; background: var(--surf2); border: 1px solid var(--border); }
+
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-left { padding: 4rem 3.5rem; border-right: 1px solid var(--border); }
+  .about-left h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 2rem; }
+  .about-left h2 em { color: var(--gold); font-style: normal; font-weight: 600; }
+  .about-body p { font-size: 0.98rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
+  .about-right { padding: 4rem 3.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+  /* CONTACT */
+  .contact-section { border-top: 1px solid var(--border); }
+  .contact { padding: 0 3.5rem 5rem; max-width: 680px; }
+  .contact h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .contact h2 em { color: var(--gold); font-style: normal; font-weight: 500; }
+  .contact p { font-size: 0.98rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 520px; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 0.7rem 1.4rem; border: 1px solid var(--border); color: var(--text); font-size: 0.85rem; font-weight: 500; transition: border-color 0.2s, color 0.2s; }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-link svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 3.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 4rem 1.5rem 3rem; }
+    .hero-right { padding: 2.5rem 1.5rem; }
+    .proj { grid-template-columns: 1fr; min-height: auto; }
+    .proj:nth-child(even) .proj-img { order: unset; border-left: none; border-right: none; }
+    .proj:nth-child(even) .proj-content { order: unset; }
+    .proj-img { min-height: 260px; border-right: none; border-bottom: 1px solid var(--border); }
+    .proj-content { padding: 2rem 1.5rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+    .about-right { padding: 2rem 1.5rem; }
+    .sec-head, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .skill-clusters { grid-template-columns: 1fr; gap: 1rem; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">IM.eng</span>
+  <ul class="nav-links">
+    <li><a href="#top">Home</a></li>
+    <li class="has-drop">
+      <span class="drop-btn">Projects <svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg></span>
+      <div class="drop-menu">
+        <a href="#proj-sorter">Automated Sorting System <span class="yr">2024</span></a>
+        <a href="#proj-fridge">Minifridge COP Optimisation <span class="yr">2026</span></a>
+        <a href="#proj-bridge">Retractable Bridge <span class="yr">2024</span></a>
+        <a href="#proj-gearbox">EV Gearbox Design <span class="yr">2025</span></a>
+        <a href="#proj-robot">IR-Tracking Robot <span class="yr">2021</span></a>
+      </div>
+    </li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="top" style="padding-top:60px;">
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Mechanical Engineer &mdash; B.Eng, UVic</div>
+    <h1 class="hero-name">Isaac<span class="surname">Maron</span></h1>
+    <p class="hero-desc">Graduating August 2025. I design and build systems that bridge the physical and digital — from competitive mechatronics to thermodynamic modelling and precision mechanism design.</p>
+    <a href="#projects" class="hero-cta">View Projects <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></a>
+  </div>
+  <div class="hero-right">
+    <!-- PHOTO: replace with <img src="images/photo.jpg" alt="Isaac Maron"> -->
+    <div class="photo-slot">
+      <span class="photo-hint">[ INSERT PHOTO ]<br>replace with &lt;img src="images/photo.jpg"&gt;</span>
+    </div>
+    <div class="skill-clusters">
+      <div><div class="cluster-label">Mechanical &amp; Thermal</div><div class="pills"><span class="pill">Thermodynamics</span><span class="pill">Heat transfer</span><span class="pill">Fluid mechanics</span><span class="pill">Mechanism design</span><span class="pill">AGMA standards</span></div></div>
+      <div><div class="cluster-label">Computational</div><div class="pills"><span class="pill">Python</span><span class="pill">CoolProp</span><span class="pill">MATLAB</span><span class="pill">Arduino / C++</span><span class="pill">Excel</span></div></div>
+      <div><div class="cluster-label">Design &amp; Fabrication</div><div class="pills"><span class="pill">SolidWorks</span><span class="pill">Laser cutting</span><span class="pill">3D printing</span><span class="pill">Prototyping</span></div></div>
+      <div><div class="cluster-label">Electrical &amp; Controls</div><div class="pills"><span class="pill">Microcontrollers</span><span class="pill">PWM</span><span class="pill">Sensor integration</span><span class="pill">Motor control</span></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects"><div class="sec-head"><span class="sec-label">Selected Work</span><div class="sec-rule"></div></div></div>
+
+<div class="projects">
+
+  <!-- 01 SORTING SYSTEM -->
+  <div class="proj" id="proj-sorter">
+    <div class="proj-img">
+      <div class="img-slot">
+        <!-- Replace with: <img src="images/sorter.jpg" alt="Sorting system"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>sorter.jpg</span>
+      </div>
+      <span class="proj-num">01 / 05</span>
+    </div>
+    <div class="proj-content">
+      <div class="proj-meta"><span class="cat-badge">Mechatronics</span><span class="proj-yr">2024</span></div>
+      <h2 class="proj-title">Automated Multi-Material Sorting System</h2>
+      <p class="proj-what">A competitive sorting machine that classifies and routes 48 mixed pieces — aluminium, steel, black and white nylon — in under 20 seconds using sensor fusion and custom microcontroller logic.</p>
+      <div class="highlight">&#127942; 1st place &mdash; 48 pieces sorted in 17 s (1 error). Fastest recorded time in course history.</div>
+      <div class="info-stack">
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Classify 4 material types at speed using non-contact sensing. Orchestrate stepper motors, PWM conveyor, and end-gate actuator from a single microcontroller with minimal classification errors.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Inductive proximity sensor for ferrous/non-ferrous detection. Optical contrast sensor for polymer colour classification. Custom interrupt-driven C++ on Arduino coordinating all actuators.</p></div>
+      </div>
+      <div class="tool-tags"><span class="tool-tag">Arduino</span><span class="tool-tag">C++</span><span class="tool-tag">Stepper motors</span><span class="tool-tag">PWM</span><span class="tool-tag">Inductive sensor</span><span class="tool-tag">Optical contrast sensor</span></div>
+    </div>
+  </div>
+
+  <!-- 02 FRIDGE -->
+  <div class="proj" id="proj-fridge">
+    <div class="proj-img">
+      <div class="img-slot">
+        <!-- Replace with: <img src="images/fridge.jpg" alt="Fridge P-h diagram"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>fridge.jpg</span>
+      </div>
+      <span class="proj-num">02 / 05</span>
+    </div>
+    <div class="proj-content">
+      <div class="proj-meta"><span class="cat-badge">Thermofluids</span><span class="proj-yr">2026</span></div>
+      <h2 class="proj-title">Minifridge Reverse Engineering &amp; COP Optimisation</h2>
+      <p class="proj-what">Full reverse-engineering analysis of a commercial minifridge to diagnose poor thermal performance. Iterative Python model using CoolProp accurately predicted elevated steady-state interior temperatures (~9 °C above spec).</p>
+      <div class="info-stack">
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Identify root cause of above-spec temperatures. Build a validated thermodynamic model coupling energy balances, mass flow convergence, and Lockhart-Martinelli pressure-drop correlation.</p></div>
+        <div class="info-row out"><span class="info-label">Key Outcome</span><p class="info-text">Novel desiccant wheel proposal driven by 55 °C condenser waste heat — predicted to reduce duty cycle 8–15% by suppressing evaporator frost accumulation at zero operating cost.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">CoolProp refrigerant property library. Iterative mass flow convergence loop. Two-phase pressure drop via Lockhart-Martinelli. Full P-h diagram generation in Python.</p></div>
+      </div>
+      <div class="tool-tags"><span class="tool-tag">Python</span><span class="tool-tag">CoolProp</span><span class="tool-tag">Thermodynamic modelling</span><span class="tool-tag">Lockhart-Martinelli</span><span class="tool-tag">Two-phase flow</span></div>
+    </div>
+  </div>
+
+  <!-- 03 BRIDGE -->
+  <div class="proj" id="proj-bridge">
+    <div class="proj-img">
+      <div class="img-slot">
+        <!-- Replace with: <img src="images/bridge.jpg" alt="Retractable bridge"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>bridge.jpg</span>
+      </div>
+      <span class="proj-num">03 / 05</span>
+    </div>
+    <div class="proj-content">
+      <div class="proj-meta"><span class="cat-badge">Mechanism Design</span><span class="proj-yr">2024</span></div>
+      <h2 class="proj-title">Motorised Retractable Bridge &mdash; MECH 350</h2>
+      <p class="proj-what">Motorised bridge constrained to an 11-inch height envelope, spanning 32 inches and clearing 22 inches on retraction while supporting a 2 kg live load with vehicle passage.</p>
+      <div class="info-stack">
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Symmetric, predictable extension within tight height constraint. Maximum mechanical advantage at full extension. Support 2 kg live load via bidirectional motor control.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Reverse double four-bar linkage with 1:1 gear-coupled chassis. DC motor to custom gear reduction to cable spool through eyelets. 6 mm birch plywood, laser-cut gears, steel shaft pivots, 3D-printed pins.</p></div>
+      </div>
+      <div class="tool-tags"><span class="tool-tag">Four-bar linkage</span><span class="tool-tag">Gear design</span><span class="tool-tag">Laser cutting</span><span class="tool-tag">3D printing</span><span class="tool-tag">DC motor</span><span class="tool-tag">Cable drive</span><span class="tool-tag">SolidWorks</span></div>
+    </div>
+  </div>
+
+  <!-- 04 GEARBOX -->
+  <div class="proj" id="proj-gearbox">
+    <div class="proj-img">
+      <div class="img-slot">
+        <!-- Replace with: <img src="images/gearbox.jpg" alt="EV gearbox CAD"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>gearbox.jpg</span>
+      </div>
+      <span class="proj-num">04 / 05</span>
+    </div>
+    <div class="proj-content">
+      <div class="proj-meta"><span class="cat-badge">Machine Design</span><span class="proj-yr">2025</span></div>
+      <h2 class="proj-title">Three-Stage EV Gearbox Design &mdash; MECH 360</h2>
+      <p class="proj-what">Three-stage compound gear train for a fictional EV platform with a 12:1 speed reduction, constrained to 160% of the Nissan Leaf transmission volume. Full AGMA analysis, SolidWorks model, and calculation package.</p>
+      <div class="info-stack">
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">12:1 speed reduction within volume constraint. AGMA bending and surface fatigue life targets met. Gear geometry optimised for contact ratio and cost efficiency.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Three-stage compound layout. Full AGMA bending and contact stress analysis for all gear pairs. Bearing selection under combined loading. Shaft design with safety factor analysis at critical cross-sections.</p></div>
+      </div>
+      <div class="tool-tags"><span class="tool-tag">SolidWorks</span><span class="tool-tag">AGMA standards</span><span class="tool-tag">Bearing selection</span><span class="tool-tag">Shaft design</span><span class="tool-tag">Excel</span></div>
+    </div>
+  </div>
+
+  <!-- 05 ROBOT -->
+  <div class="proj" id="proj-robot">
+    <div class="proj-img">
+      <div class="img-slot">
+        <!-- Replace with: <img src="images/robot.jpg" alt="IR tracking robot"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>robot.jpg</span>
+      </div>
+      <span class="proj-num">05 / 05</span>
+    </div>
+    <div class="proj-content">
+      <div class="proj-meta"><span class="cat-badge">Robotics</span><span class="proj-yr">2021</span></div>
+      <h2 class="proj-title">Autonomous IR-Tracking Robot &mdash; ENGR 120</h2>
+      <p class="proj-what">Autonomous VEX robot programmed to locate an IR-emitting target and precisely place a ping pong ball on top of the sensor &mdash; UVic first-year interdisciplinary engineering project.</p>
+      <div class="info-stack">
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Navigate autonomously to an IR source without pre-programmed paths. Position precisely enough to deposit a ping pong ball on the sensor. Handle variable IR intensity reliably.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">ROBOTC with custom sensor-fusion logic. Dual IR sensors for angular correction. Dead-reckoning fallback when signal lost. Threshold-based state machine for approach, fine-position, and deposit.</p></div>
+      </div>
+      <div class="tool-tags"><span class="tool-tag">VEX Robotics</span><span class="tool-tag">ROBOTC</span><span class="tool-tag">IR sensing</span><span class="tool-tag">Autonomous navigation</span><span class="tool-tag">Sensor fusion</span></div>
+    </div>
+  </div>
+
+</div><!-- /projects -->
+
+<!-- ABOUT -->
+<div id="about"><div class="sec-head"><span class="sec-label">About</span><div class="sec-rule"></div></div></div>
+<div class="about">
+  <div class="about-left">
+    <h2>Building things that work the way <em>physics</em> says they should.</h2>
+    <div class="about-body">
+      <p>I'm a mechanical engineering student at the University of Victoria, graduating August 2025 with specialisations in Mechatronics and Energy Systems.</p>
+      <p>My work sits at the intersection of physical design and computational analysis — equally comfortable writing Python thermodynamic models as building and testing a four-bar linkage on the bench.</p>
+      <p>I'm drawn to problems where the answer isn't obvious at the start: build the model, question the assumptions, and iterate until the physics agrees.</p>
+      <p>Outside engineering, I helped build and run the UVic Aero club's web presence, which taught me that communicating technical work clearly is just as important as doing it.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="skill-clusters" style="gap:2rem;">
+      <div><div class="cluster-label">Mechanical &amp; Thermal</div><div class="pills"><span class="pill">Thermodynamics</span><span class="pill">Heat transfer</span><span class="pill">Fluid mechanics</span><span class="pill">Mechanism design</span><span class="pill">Machine elements</span><span class="pill">AGMA standards</span></div></div>
+      <div><div class="cluster-label">Computational</div><div class="pills"><span class="pill">Python</span><span class="pill">CoolProp</span><span class="pill">MATLAB</span><span class="pill">Arduino / C++</span><span class="pill">ROBOTC</span><span class="pill">Excel</span></div></div>
+      <div><div class="cluster-label">Design &amp; Fabrication</div><div class="pills"><span class="pill">SolidWorks</span><span class="pill">CAD modelling</span><span class="pill">Laser cutting</span><span class="pill">3D printing</span></div></div>
+      <div><div class="cluster-label">Electrical &amp; Controls</div><div class="pills"><span class="pill">Microcontrollers</span><span class="pill">PWM</span><span class="pill">Sensor integration</span><span class="pill">Motor control</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-section">
+  <div class="sec-head"><span class="sec-label">Get in touch</span><div class="sec-rule"></div></div>
+  <div class="contact">
+    <h2>Open to <em>opportunities</em></h2>
+    <p>Actively looking for full-time roles starting August 2026 in engineering, finance, consulting, or anywhere I can apply a strong technical and analytical background. I value learning fast, working on hard problems, and teams that take execution seriously.</p>
+    <div class="contact-links">
+      <a href="mailto:idmaron03@gmail.com" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>Email</a>
+      <a href="https://www.linkedin.com/in/isaac-maron-08a822256/" class="contact-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a>
+      <a href="https://github.com/Charly-and" class="contact-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>Isaac Maron &mdash; B.Eng Mechanical Engineering, UVic 2025</span>
+  <span>Victoria, BC</span>
+</footer>
+
+</body>
+</html>
