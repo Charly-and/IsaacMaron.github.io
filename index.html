@@ -253,10 +253,19 @@
   <!-- 03 BRIDGE -->
   <div class="proj" id="proj-bridge">
     <div class="proj-img">
-      <div class="img-slot">
-        <video autoplay loop muted playsinline>
-          <source src="Bridge Video.mp4" type="video/mp4">
-        </video>
+      <div class="img-slot" style="position:absolute;inset:0;pointer-events:none;">
+        <div class="carousel" style="position:relative;width:100%;height:100%;">
+          <video id="c-bridge-1" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="Bridge Video.mp4" type="video/mp4">
+          </video>
+          <img id="c-bridge-2" src="image (7).png" style="width:100%;height:100%;object-fit:contain;display:none;">
+          <button onclick="bridgeCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8592;</button>
+          <button onclick="bridgeCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8594;</button>
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
+            <span id="dot-b-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+            <span id="dot-b-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+          </div>
+        </div>
       </div>
       <span class="proj-num">03 / 05</span>
     </div>
@@ -372,6 +381,16 @@
     fridgeIdx = (fridgeIdx + dir + fridgeImgs.length) % fridgeImgs.length;
     document.getElementById(fridgeImgs[fridgeIdx]).style.display = 'block';
     document.getElementById(fridgeDots[fridgeIdx]).style.background = '#c8a96e';
+    
+  let bridgeIdx = 0;
+  const bridgeImgs = ['c-bridge-1','c-bridge-2'];
+  const bridgeDots = ['dot-b-1','dot-b-2'];
+  function bridgeCarousel(dir) {
+    document.getElementById(bridgeImgs[bridgeIdx]).style.display = 'none';
+    document.getElementById(bridgeDots[bridgeIdx]).style.background = '#7a6438';
+    bridgeIdx = (bridgeIdx + dir + bridgeImgs.length) % bridgeImgs.length;
+    document.getElementById(bridgeImgs[bridgeIdx]).style.display = 'block';
+    document.getElementById(bridgeDots[bridgeIdx]).style.background = '#c8a96e';
   }
 </script>
 </html>
