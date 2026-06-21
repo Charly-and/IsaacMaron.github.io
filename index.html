@@ -361,4 +361,16 @@
 </footer>
 
 </body>
+  <script>
+  let fridgeIdx = 0;
+  const fridgeImgs = ['c-fridge-1','c-fridge-2'];
+  const fridgeDots = ['dot-f-1','dot-f-2'];
+  function fridgeCarousel(dir) {
+    document.getElementById(fridgeImgs[fridgeIdx]).style.display = 'none';
+    document.getElementById(fridgeDots[fridgeIdx]).style.background = '#7a6438';
+    fridgeIdx = (fridgeIdx + dir + fridgeImgs.length) % fridgeImgs.length;
+    document.getElementById(fridgeImgs[fridgeIdx]).style.display = 'block';
+    document.getElementById(fridgeDots[fridgeIdx]).style.background = '#c8a96e';
+  }
+</script>
 </html>
