@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Isaac Maron — Mechanical Engineer</title>
+  <title>Isaac Maron — Mechanical Engineering Student</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -72,7 +72,7 @@
 
   /* PROJECTS */
   .projects { border-top: 1px solid var(--border); }
-  .proj { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 3px solid var(--gold-dim); }
+  .proj { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 3px solid var(--border); }
   .proj-img { position: relative; background: var(--surf); border-right: 1px solid var(--border); overflow: hidden; min-height: 400px; }
   .proj:nth-child(even) .proj-img { order: 2; border-left: 1px solid var(--border); border-right: none; }
   .proj:nth-child(even) .proj-content { order: 1; }
@@ -161,9 +161,9 @@
       <div class="drop-menu">
         <a href="#proj-sorter">Automated Sorting System <span class="yr">2024</span></a>
         <a href="#proj-fridge">Minifridge COP Optimisation <span class="yr">2026</span></a>
-        <a href="#proj-bridge">Retractable Bridge <span class="yr">2024</span></a>
+        <a href="#proj-capstone">Wing Foil Force System <span class="yr">2026</span></a>
         <a href="#proj-gearbox">EV Gearbox Design <span class="yr">2025</span></a>
-        <a href="#proj-robot">IR-Tracking Robot <span class="yr">2021</span></a>
+        <a href="#proj-bridge">Retractable Bridge <span class="yr">2024</span></a> 
       </div>
     </li>
     <li><a href="#about">About</a></li>
@@ -175,9 +175,9 @@
 <div id="top" style="padding-top:60px;">
 <div class="hero">
   <div class="hero-left">
-    <div class="eyebrow">Mechanical Engineer &mdash; B.Eng, UVic</div>
+    <div class="eyebrow">Mechanical Engineering Student &mdash; B.Eng, UVic</div>
     <h1 class="hero-name">Isaac<span class="surname">Maron</span></h1>
-    <p class="hero-desc">Graduating August 2025. I design and build systems that bridge the physical and digital — from competitive mechatronics to thermodynamic modelling and precision mechanism design.</p>
+    <p class="hero-desc">Graduating from the University Of victoria August 2026. I design and build systems that bridge the physical and digital — from competitive mechatronics to thermodynamic modelling and precision mechanism design.</p>
     <a href="#projects" class="hero-cta">View Projects <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></a>
   </div>
   <div class="hero-right">
@@ -251,37 +251,30 @@
       <div class="tool-tags"><span class="tool-tag">Python</span><span class="tool-tag">CoolProp</span><span class="tool-tag">Thermodynamic modelling</span><span class="tool-tag">Lockhart-Martinelli</span><span class="tool-tag">Two-phase flow</span></div>
     </div>
   </div>
-
-  <!-- 03 BRIDGE -->
-  <div class="proj" id="proj-bridge">
+  
+  <!-- 03 CAPSTONE -->
+  <div class="proj" id="proj-capstone">
     <div class="proj-img">
-      <div class="img-slot" style="position:absolute;inset:0;pointer-events:none;">
-        <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
-          <video id="c-bridge-1" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
-            <source src="Bridge Video.mp4" type="video/mp4">
-          </video>
-          <img id="c-bridge-2" src="image (7).png" style="width:100%;height:100%;object-fit:contain;display:none;">
-          <button onclick="bridgeCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8592;</button>
-          <button onclick="bridgeCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8594;</button>
-          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
-            <span id="dot-b-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
-            <span id="dot-b-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
-          </div>
-        </div>
+      <div class="img-slot">
+        <!-- Replace with: <img src="capstone.jpg" alt="Force measuring system"> -->
+        <span class="img-placeholder">[ INSERT IMAGE ]<br>capstone.jpg</span>
       </div>
       <span class="proj-num">03 / 05</span>
     </div>
     <div class="proj-content">
-      <div class="proj-meta"><span class="cat-badge">Mechanism Design</span><span class="proj-yr">2024</span></div>
-      <h2 class="proj-title">Motorised Retractable Bridge &mdash; MECH 350</h2>
-      <p class="proj-what">Motorised bridge constrained to an 11-inch height envelope, spanning 32 inches and clearing 22 inches on retraction while supporting a 2 kg live load with vehicle passage.</p>
+      <div class="proj-meta"><span class="cat-badge">Capstone</span><span class="proj-yr">2025</span></div>
+      <h2 class="proj-title">Wing Foil Force Measurement System — MECH 499</h2>
+      <p class="proj-what">Instrumented boom handle system for wingfoiling wings that quantifies the pulling forces a rider experiences in real time — enabling objective, data-driven comparison of wing fabrics and construction methods for client Tagmata.</p>
+      <div class="highlight">&#128268; In progress — developing force quantification platform to replace subjective rider feedback in wing material R&amp;D.</div>
       <div class="info-stack">
-        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Symmetric, predictable extension within tight height constraint. Maximum mechanical advantage at full extension. Support 2 kg live load via bidirectional motor control.</p></div>
-        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Reverse double four-bar linkage with 1:1 gear-coupled chassis. DC motor to custom gear reduction to cable spool through eyelets. 6 mm birch plywood, laser-cut gears, steel shaft pivots, 3D-printed pins.</p></div>
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Design and build a force-measuring boom handle that captures rider pull forces across multiple axes during real wingfoiling sessions. Provide Tagmata with repeatable, quantitative data to evaluate polyester weaves and competing fabric constructions against one another.</p></div>
+        <div class="info-row out"><span class="info-label">Client & Motivation</span><p class="info-text">Tagmata currently relies on subjective rider feedback to evaluate wing fabrics. This system replaces guesswork with measured force data, giving their R&amp;D team a defensible basis for material selection and marketing claims.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Multi-axis force sensing integrated into a standard boom handle form factor. Data logging for post-session analysis. System designed to survive saltwater, dynamic loading, and the mechanical abuse of active foiling sessions.</p></div>
       </div>
-      <div class="tool-tags"><span class="tool-tag">Four-bar linkage</span><span class="tool-tag">Gear design</span><span class="tool-tag">Laser cutting</span><span class="tool-tag">3D printing</span><span class="tool-tag">DC motor</span><span class="tool-tag">Cable drive</span><span class="tool-tag">SolidWorks</span></div>
+      <div class="tool-tags"><span class="tool-tag">Force sensing</span><span class="tool-tag">Instrumentation</span><span class="tool-tag">Data logging</span><span class="tool-tag">SolidWorks</span><span class="tool-tag">Arduino</span><span class="tool-tag">Structural design</span></div>
     </div>
   </div>
+ 
 
   <!-- 04 GEARBOX -->
   <div class="proj" id="proj-gearbox">
@@ -304,27 +297,37 @@
     </div>
   </div>
 
-  <!-- 05 ROBOT -->
-  <div class="proj" id="proj-robot">
+   <!-- 05 BRIDGE -->
+  <div class="proj" id="proj-bridge">
     <div class="proj-img">
-      <div class="img-slot">
-        <!-- Replace with: <img src="images/robot.jpg" alt="IR tracking robot"> -->
-        <span class="img-placeholder">[ INSERT IMAGE ]<br>robot.jpg</span>
+      <div class="img-slot" style="position:absolute;inset:0;pointer-events:none;">
+        <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
+          <video id="c-bridge-1" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="Bridge Video.mp4" type="video/mp4">
+          </video>
+          <img id="c-bridge-2" src="image (7).png" style="width:100%;height:100%;object-fit:contain;display:none;">
+          <button onclick="bridgeCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8592;</button>
+          <button onclick="bridgeCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8594;</button>
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
+            <span id="dot-b-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+            <span id="dot-b-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+          </div>
+        </div>
       </div>
       <span class="proj-num">05 / 05</span>
     </div>
     <div class="proj-content">
-      <div class="proj-meta"><span class="cat-badge">Robotics</span><span class="proj-yr">2021</span></div>
-      <h2 class="proj-title">Autonomous IR-Tracking Robot &mdash; ENGR 120</h2>
-      <p class="proj-what">Autonomous VEX robot programmed to locate an IR-emitting target and precisely place a ping pong ball on top of the sensor &mdash; UVic first-year interdisciplinary engineering project.</p>
+      <div class="proj-meta"><span class="cat-badge">Mechanism Design</span><span class="proj-yr">2024</span></div>
+      <h2 class="proj-title">Motorised Retractable Bridge &mdash; MECH 350</h2>
+      <p class="proj-what">Motorised bridge constrained to an 11-inch height envelope, spanning 32 inches and clearing 22 inches on retraction while supporting a 2 kg live load with vehicle passage.</p>
       <div class="info-stack">
-        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Navigate autonomously to an IR source without pre-programmed paths. Position precisely enough to deposit a ping pong ball on the sensor. Handle variable IR intensity reliably.</p></div>
-        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">ROBOTC with custom sensor-fusion logic. Dual IR sensors for angular correction. Dead-reckoning fallback when signal lost. Threshold-based state machine for approach, fine-position, and deposit.</p></div>
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Symmetric, predictable extension within tight height constraint. Maximum mechanical advantage at full extension. Support 2 kg live load via bidirectional motor control.</p></div>
+        <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Reverse double four-bar linkage with 1:1 gear-coupled chassis. DC motor to custom gear reduction to cable spool through eyelets. 6 mm birch plywood, laser-cut gears, steel shaft pivots, 3D-printed pins.</p></div>
       </div>
-      <div class="tool-tags"><span class="tool-tag">VEX Robotics</span><span class="tool-tag">ROBOTC</span><span class="tool-tag">IR sensing</span><span class="tool-tag">Autonomous navigation</span><span class="tool-tag">Sensor fusion</span></div>
+      <div class="tool-tags"><span class="tool-tag">Four-bar linkage</span><span class="tool-tag">Gear design</span><span class="tool-tag">Laser cutting</span><span class="tool-tag">3D printing</span><span class="tool-tag">DC motor</span><span class="tool-tag">Cable drive</span><span class="tool-tag">SolidWorks</span></div>
     </div>
   </div>
-
+  
 </div><!-- /projects -->
 
 <!-- ABOUT -->
