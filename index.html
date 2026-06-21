@@ -371,7 +371,7 @@
 </footer>
 
 </body>
-  <script>
+<script>
   let fridgeIdx = 0;
   const fridgeImgs = ['c-fridge-1','c-fridge-2'];
   const fridgeDots = ['dot-f-1','dot-f-2'];
@@ -381,7 +381,8 @@
     fridgeIdx = (fridgeIdx + dir + fridgeImgs.length) % fridgeImgs.length;
     document.getElementById(fridgeImgs[fridgeIdx]).style.display = 'block';
     document.getElementById(fridgeDots[fridgeIdx]).style.background = '#c8a96e';
-    
+  }
+
   let bridgeIdx = 0;
   const bridgeImgs = ['c-bridge-1','c-bridge-2'];
   const bridgeDots = ['dot-b-1','dot-b-2'];
