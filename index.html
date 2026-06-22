@@ -33,7 +33,7 @@
   .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
   .has-drop { position: relative; }
-  .drop-btn { display: flex; align-items: center; gap: 5px; cursor: default; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .drop-btn { display: flex; align-items: center; gap: 5px; cursor: pointer; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
   .drop-btn svg { width: 9px; height: 9px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.2s; }
   .has-drop:hover .drop-btn svg { transform: rotate(180deg); }
   .drop-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; min-width: 260px; background: var(--surf); border: 1px solid var(--border); padding: 6px 0; }
@@ -109,7 +109,7 @@
 
   /* ABOUT */
   .about { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .about-left { padding: 4rem 3.5rem; border-right: none; max-width: 780px; }
+  .about-left { padding: 4rem 3.5rem; border-right: none; max-width: 100%; }
   .about-left h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 2rem; }
   .about-left h2 em { color: var(--gold); font-style: normal; font-weight: 600; }
   .about-body p { font-size: 1.05rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
@@ -117,7 +117,7 @@
 
   /* CONTACT */
   .contact-section { border-top: 1px solid var(--border); }
-  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 0 3.5rem 5rem; align-items: start; }
+  .contact-inner { display: grid; grid-template-columns: 3fr 1fr; gap: 4rem; padding: 0 3.5rem 5rem; align-items: start; }
   .contact h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
   .contact h2 em { color: var(--gold); font-style: normal; font-weight: 500; }
   .contact-body p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
@@ -412,6 +412,18 @@
     
 </body>
 <script>
+  
+  document.querySelector('.drop-btn').addEventListener('click', function() {
+    const menu = document.querySelector('.drop-menu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+  
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.has-drop')) {
+      document.querySelector('.drop-menu').style.display = 'none';
+    }
+  });
+  
   function openLightbox(src, alt) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox-img').alt = alt || '';
