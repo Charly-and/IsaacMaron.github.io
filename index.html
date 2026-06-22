@@ -108,8 +108,8 @@
   .tool-tag { font-family: var(--mono); font-size: 0.63rem; color: var(--muted); padding: 3px 9px; background: var(--surf2); border: 1px solid var(--border); }
 
   /* ABOUT */
-  .about { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .about-left { padding: 4rem 3.5rem; border-right: 1px solid var(--border); }
+  .about { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-left { padding: 4rem 3.5rem; border-right: none; max-width: 780px; }
   .about-left h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 2rem; }
   .about-left h2 em { color: var(--gold); font-style: normal; font-weight: 600; }
   .about-body p { font-size: 1.05rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
@@ -117,12 +117,12 @@
 
   /* CONTACT */
   .contact-section { border-top: 1px solid var(--border); }
-  .contact { padding: 0 3.5rem 5rem; max-width: 680px; }
-  .contact h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 0 3.5rem 5rem; align-items: start; }
+  .contact h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
   .contact h2 em { color: var(--gold); font-style: normal; font-weight: 500; }
-  .contact p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 520px; }
-  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
-  .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 0.7rem 1.4rem; border: 1px solid var(--border); color: var(--text); font-size: 0.85rem; font-weight: 500; transition: border-color 0.2s, color 0.2s; }
+  .contact-body p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+  .contact-side { display: flex; flex-direction: column; gap: 1rem; padding-top: 0.5rem; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 0.9rem 1.4rem; border: 1px solid var(--border); color: var(--text); font-size: 0.95rem; font-weight: 500; transition: border-color 0.2s, color 0.2s; width: 100%; }
   .contact-link:hover { border-color: var(--gold); color: var(--gold); }
   .contact-link svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -147,6 +147,14 @@
     .sec-head, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
     .skill-clusters { grid-template-columns: 1fr; gap: 1rem; }
   }
+    /* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
+.lightbox-close { position: absolute; top: 1.5rem; right: 2rem; font-family: var(--mono); font-size: 1.5rem; color: var(--gold); cursor: pointer; opacity: 0.7; }
+.lightbox-close:hover { opacity: 1; }
+.img-slot img { cursor: zoom-in; }
+.photo-slot img { cursor: zoom-in; }
   </style>
 </head>
 <body>
@@ -184,12 +192,35 @@
     <div class="photo-slot">
       <img src="Hero.JPG" alt="Isaac Maron">
     </div>
-    <div class="skill-clusters">
-      <div><div class="cluster-label">Mechanical &amp; Thermal</div><div class="pills"><span class="pill">Thermodynamics</span><span class="pill">Heat transfer</span><span class="pill">Fluid mechanics</span><span class="pill">Mechanism design</span><span class="pill">Engineering Drawings</span><span class="pill">CAD Moddeling</span></div></div>
-      <div><div class="cluster-label">Computational</div><div class="pills"><span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">MATLAB</span><span class="pill">Data analysis</span><span class="pill">Excel</span></div></div>
-      <div><div class="cluster-label">Design &amp; Fabrication</div><div class="pills"><span class="pill">SolidWorks</span><span class="pill">3D printing</span><span class="pill">Prototyping</span></div></div><span class="pill">Fabrication and testing</span>
-      <div><div class="cluster-label">Electrical &amp; Controls</div><div class="pills"><span class="pill">Microcontrollers</span><span class="pill">Data acquisition</span><span class="pill">Sensor integration</span><span class="pill">Motor control</span></div></div><span class="pill">SPI / I2C</span></div></div>
-      <div><div class="cluster-label"> Operations &amp; Leadership </div><div class="pills"><span class="pill">Quality Control</span><span class="pill">Team Managment</span><span class="pill">Project Coordination</span><span class="pill">Client Relations</span></div></div><span class="pill">Bugget Management</span></div></div>
+<div class="skill-clusters">
+  <div>
+    <div class="cluster-label">Mechanical &amp; Thermal</div>
+    <div class="pills">
+      <span class="pill">Thermodynamics</span><span class="pill">Heat transfer</span><span class="pill">Fluid mechanics</span><span class="pill">Mechanism design</span><span class="pill">Engineering Drawings</span><span class="pill">CAD Modelling</span>
+    </div>
+  </div>
+  <div>
+    <div class="cluster-label">Computational</div>
+    <div class="pills">
+      <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">MATLAB</span><span class="pill">Data analysis</span><span class="pill">Excel</span>
+    </div>
+  </div>
+  <div>
+    <div class="cluster-label">Design &amp; Fabrication</div>
+    <div class="pills">
+      <span class="pill">SolidWorks</span><span class="pill">3D printing</span><span class="pill">Prototyping</span><span class="pill">Fabrication and testing</span>
+    </div>
+  </div>
+  <div>
+    <div class="cluster-label">Electrical &amp; Controls</div>
+    <div class="pills">
+      <span class="pill">Microcontrollers</span><span class="pill">Data acquisition</span><span class="pill">Sensor integration</span><span class="pill">Motor control</span><span class="pill">SPI / I2C</span>
+    </div>
+  </div>
+  <div>
+    <div class="cluster-label">Operations &amp; Leadership</div>
+    <div class="pills">
+      <span class="pill">Quality Control</span><span class="pill">Team Management</span><span class="pill">Project Coordination</span><span class="pill">Client Relations</span><span class="pill">Budget Management</span>
     </div>
   </div>
 </div>
@@ -344,25 +375,20 @@
     </div>
   </div>
   <div class="about-right">
-    <div class="skill-clusters" style="gap:2rem;">
-      <div><div class="cluster-label">Mechanical &amp; Thermal</div><div class="pills"><span class="pill">Thermodynamics</span><span class="pill">Heat transfer</span><span class="pill">Fluid mechanics</span><span class="pill">Mechanism design</span><span class="pill">Machine elements</span><span class="pill">AGMA standards</span></div></div>
-      <div><div class="cluster-label">Computational</div><div class="pills"><span class="pill">Python</span><span class="pill">CoolProp</span><span class="pill">MATLAB</span><span class="pill">Arduino / C++</span><span class="pill">ROBOTC</span><span class="pill">Excel</span></div></div>
-      <div><div class="cluster-label">Design &amp; Fabrication</div><div class="pills"><span class="pill">SolidWorks</span><span class="pill">CAD modelling</span><span class="pill">Laser cutting</span><span class="pill">3D printing</span></div></div>
-      <div><div class="cluster-label">Electrical &amp; Controls</div><div class="pills"><span class="pill">Microcontrollers</span><span class="pill">PWM</span><span class="pill">Sensor integration</span><span class="pill">Motor control</span></div></div>
-    </div>
-  </div>
-</div>
 
 <!-- CONTACT -->
 <div id="contact" class="contact-section">
   <div class="sec-head"><span class="sec-label">Get in touch</span><div class="sec-rule"></div></div>
-  <div class="contact">
-    <h2>Open to <em>opportunities</em></h2>
-    <p>I am actively looking for full-time opportunities starting August 2026 in engineering, finance, consulting, or other roles where I can apply my technical and analytical background. While these areas are my main interests I remain open minded to opportunities unbekownst to me.<br><br>
-      In a proffesional enviornment complex problems, continuous improvement, and the chance to learn quickly in challenging environments motivates me. I value mental resilience, strong execution, and a willingness to take on difficult problems with an open mind. I am especially interested in work involving automation, efficiency, financial analysis, engineering design, and data-driven decision-making.<br><br>
-      Above all, I value learning and growth, and I hope to join a team that shares that same mindset.<br><br>
-      Feel free to reach out through email or LinkedIn.</p>
-    <div class="contact-links">
+  <div class="contact-inner">
+    <div class="contact">
+      <h2>Open to <em>opportunities</em></h2>
+      <div class="contact-body">
+        <p>I am actively looking for full-time opportunities starting August 2026 in engineering, finance, consulting, or other roles where I can apply my technical and analytical background. I remain open minded to opportunities unbeknownst to me.</p>
+        <p>Complex problems, continuous improvement, and the chance to learn quickly in challenging environments motivate me. I value mental resilience, strong execution, and a willingness to take on difficult problems with an open mind — especially in work involving automation, efficiency, financial analysis, engineering design, and data-driven decision-making.</p>
+        <p>Above all, I value learning and growth, and I hope to join a team that shares that same mindset.</p>
+      </div>
+    </div>
+    <div class="contact-side">
       <a href="mailto:idmaron03@gmail.com" class="contact-link"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>Email</a>
       <a href="https://www.linkedin.com/in/isaac-maron-08a822256/" class="contact-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a>
       <a href="https://github.com/Charly-and" class="contact-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
@@ -375,9 +401,37 @@
   <span>Isaac Maron &mdash; B.Eng Mechanical Engineering, UVic 2025</span>
   <span>Victoria, BC</span>
 </footer>
-
+    
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+    
 </body>
 <script>
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  document.querySelectorAll('.img-slot img, .photo-slot img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      openLightbox(this.src, this.alt);
+    });
+  });
+  
   let fridgeIdx = 0;
   const fridgeImgs = ['c-fridge-1','c-fridge-2'];
   const fridgeDots = ['dot-f-1','dot-f-2'];
