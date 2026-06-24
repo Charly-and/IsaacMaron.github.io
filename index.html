@@ -246,13 +246,13 @@
     <div class="proj-content">
       <div class="proj-meta"><span class="cat-badge">MECH 458 - Mechatronics</span><span class="proj-yr">2024</span></div>
       <h2 class="proj-title">Automated Conveyor Belt Sorting System</h2>
-      <p class="proj-what">Two person team, mechatronics competition for MECH 458. The project consisited of programming an automated sorting system that used sensors, actuators, motor control, and custom microcontroller logic to classify and sort mixed material pieces./p>
+      <p class="proj-what">Two person team, mechatronics competition for MECH 458. The project consisited of programming an automated sorting system that used sensors, actuators, motor control, and custom microcontroller logic to classify and sort mixed material pieces.</p>
       <div class="highlight">&#127942; 1st place &mdash; 48 pieces sorted in 17 s (1 error). Fastest recorded time in course.</div>
       <div class="info-stack">
         <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Classify 4 material types at speed using non-contact sensing. Orchestrate stepper motors, PWM conveyor, and end-gate actuator from a single microcontroller with minimal classification errors.</p></div>
         <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Reflectivity sensor used for material classification based on surface response. Gate sensor used to detect piece position and trigger sorting timing. Custom interrupt-driven C on Atmel Studio coordinating all actuators.</p></div>
       </div>
-      <div class="tool-tags"><span class="tool-tag">Arduino</span><span class="tool-tag">C</span><span class="tool-tag">Stepper motors</span><span class="tool-tag">PWM</span><span class="tool-tag">Sensors and Actuators</span>
+      <div class="tool-tags"><span class="tool-tag">Arduino</span><span class="tool-tag">C</span><span class="tool-tag">Stepper motors</span><span class="tool-tag">PWM</span><span class="tool-tag">Sensors and Actuators</span></div>
     </div>
   </div>
 
@@ -290,8 +290,18 @@
   <div class="proj" id="proj-capstone">
     <div class="proj-img">
       <div class="img-slot">
-        <!-- Replace with: <img src="capstone.jpg" alt="Force measuring system"> -->
-        <span class="img-placeholder">[ INSERT IMAGE ]<br>capstone.jpg</span>
+        <div class="img-slot" style="position:absolute;inset:0;">
+          <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
+            <img id="c-fridge-1" src="Preliminary Wiring Diagram.JPG" style="width:100%;height:100%;object-fit:contain;display:block;">
+            <img id="c-fridge-2" src="Fill Latter" style="width:100%;height:100%;object-fit:contain;display:none;">
+            <button onclick="CapCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8592;</button>
+            <button onclick="CapCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8594;</button>
+            <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
+              <span id="dot-f-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+              <span id="dot-f-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+            </div>
+          </div>
+        </div>
       </div>
       <span class="proj-num">03 / 05</span>
     </div>
@@ -470,6 +480,17 @@ function closeLightbox() {
     bridgeIdx = (bridgeIdx + dir + bridgeImgs.length) % bridgeImgs.length;
     document.getElementById(bridgeImgs[bridgeIdx]).style.display = 'block';
     document.getElementById(bridgeDots[bridgeIdx]).style.background = '#c8a96e';
+  }
+  
+    let CapIdx = 0;
+    const CapImgs = ['c-cap-1','c-cap-2'];
+    const CapDots = ['dot-b-1','dot-b-2'];
+    function CapCarousel(dir) {
+    document.getElementById(CapImgs[CapIdx]).style.display = 'none';
+    document.getElementById(bridgeDots[CapIdx]).style.background = '#7a6438';
+    CapIdx = (CapIdx + dir + CapImgs.length) % CapImgs.length;
+    document.getElementById(CapImgs[CapIdx]).style.display = 'block';
+    document.getElementById(CapDots[CapIdx]).style.background = '#c8a96e';
   }
 </script>
 </html>
