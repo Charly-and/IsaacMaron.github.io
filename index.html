@@ -292,13 +292,13 @@
       <div class="img-slot">
         <div class="img-slot" style="position:absolute;inset:0;">
           <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
-            <img id="c-fridge-1" src="Preliminary Wiring Diagram.JPG" style="width:100%;height:100%;object-fit:contain;display:block;">
-            <img id="c-fridge-2" src="Fill Latter" style="width:100%;height:100%;object-fit:contain;display:none;">
+            <img id="c-cap-1" src="Preliminary Wiring Diagram.JPG" style="width:100%;height:100%;object-fit:contain;display:block;">
+            <img id="c-cap-2" src="Fill Latter" style="width:100%;height:100%;object-fit:contain;display:none;">
             <button onclick="CapCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8592;</button>
             <button onclick="CapCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8594;</button>
             <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
-              <span id="dot-f-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
-              <span id="dot-f-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+              <span id="dot-c-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+              <span id="dot-c-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
             </div>
           </div>
         </div>
@@ -482,15 +482,15 @@ function closeLightbox() {
     document.getElementById(bridgeDots[bridgeIdx]).style.background = '#c8a96e';
   }
   
-    let CapIdx = 0;
-    const CapImgs = ['c-cap-1','c-cap-2'];
-    const CapDots = ['dot-b-1','dot-b-2'];
-    function CapCarousel(dir) {
-    document.getElementById(CapImgs[CapIdx]).style.display = 'none';
-    document.getElementById(bridgeDots[CapIdx]).style.background = '#7a6438';
-    CapIdx = (CapIdx + dir + CapImgs.length) % CapImgs.length;
-    document.getElementById(CapImgs[CapIdx]).style.display = 'block';
-    document.getElementById(CapDots[CapIdx]).style.background = '#c8a96e';
+    let capIdx = 0;
+    const capImgs = ['c-cap-1','c-cap-2'];
+    const capDots = ['dot-c-1','dot-c-2'];
+    function capCarousel(dir) {
+    document.getElementById(capImgs[capIdx]).style.display = 'none';
+    document.getElementById(capeDots[capIdx]).style.background = '#7a6438';
+    CapIdx = (capIdx + dir + capImgs.length) % capImgs.length;
+    document.getElementById(capImgs[capIdx]).style.display = 'block';
+    document.getElementById(capDots[capIdx]).style.background = '#c8a96e';
   }
 </script>
 </html>
