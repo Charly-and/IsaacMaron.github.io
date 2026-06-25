@@ -347,11 +347,11 @@
         <div class="carousel" style="position:relative;width:100%;height:100%;">
 
           <!-- Slide 1: Wiring diagram -->
-          <img id="c-cap-1" src="Translucent Housing.png"
+          <img id="c-gear-1" src="Translucent Housing.png"
                style="width:100%;height:100%;object-fit:contain;display:block;">
 
           <!-- Slide 2: Interactive 3D model-->
-          <div id="c-cap-2" style="width:100%;height:100%;display:none;background:#161616;">
+          <div id="c-gear-2" style="width:100%;height:100%;display:none;background:#161616;">
             <model-viewer
               src="gearbox assembly.glb"
               alt="Three-stage EV gearbox 3D model"
@@ -373,7 +373,7 @@
             <span id="dot-g-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
             <span id="dot-g-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
           </div>
-
+        </div>
       <span class="proj-num">04 / 05</span>
     </div>
     <div class="proj-content">
@@ -540,7 +540,8 @@ function closeLightbox() {
     capIdx = (capIdx + dir + capImgs.length) % capImgs.length;
     document.getElementById(capImgs[capIdx]).style.display = 'block';
     document.getElementById(capDots[capIdx]).style.background = '#c8a96e';
-
+  }
+  
   let gearIdx = 0;
   const gearImgs = ['c-gear-1','c-gear-2'];
   const gearDots = ['dot-g-1','dot-g-2'];
