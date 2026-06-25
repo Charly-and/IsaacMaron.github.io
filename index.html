@@ -237,8 +237,17 @@
   <div class="proj" id="proj-sorter">
     <div class="proj-img">
       <div class="img-slot">
-        <video autoplay loop muted playsinline>
-          <source src="Mechatronics_Final_Presentation1.mp4" type="video/mp4">
+        <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
+          <video id="c-mech-1" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="Mechatronics_Final_Presentation1.mp4" type="video/mp4">
+          </video>
+          <img id="c-mech-2" src="Algprithm Flowchart.JPG" style="width:100%;height:100%;object-fit:contain;display:none;">
+          <button onclick="MechCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8592;</button>
+          <button onclick="MechCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;pointer-events:auto;">&#8594;</button>
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
+            <span id="dot-m-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+            <span id="dot-m-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+          </div>
         </video>
       </div>
       <span class="proj-num">01 / 05</span>
@@ -432,7 +441,9 @@
   <div class="about-left">
     <h2>Background</h2>
     <div class="about-body">
-      <p>....what kind of engineering work you do, what projects shaped you, what skills you’ve built, and what kind of problems you like solving.....</p>
+      <p>Through my mechanical engineering degree, professional experience, and project work, I have learned to apply mathematics and common principles across all mediums. My schooling has been mechanical engineering focused, but through various classes and projects I have acquired the skill to apply my knowledge across other engineering disciplines.</p>
+      <p>Working with UVic AERO left me with practical knowledge that extended beyond technical design, including balancing budgets, managing finances, web development, server configuration, securing funding, and building relations with new and existing patrons. In the professional world, my experience has continued to broaden through quality control, facilitating shipping, overseeing field work, managing a small team, data analysis, project management, hands-on labor, and working in the tech industry.</p>
+      <p>Together, these experiences have given me an encompassing view that enables me to bring a diverse mindset to any problem. I have a passion and a drive to learn and grow, and there is so much out there that I have yet to see. I hope to apply my eagerness and background to future complexities.</p>
     </div>
   </div>
 </div>
@@ -549,5 +560,17 @@ function closeLightbox() {
     document.getElementById(gearImgs[gearIdx]).style.display = 'block';
     document.getElementById(gearDots[gearIdx]).style.background = '#c8a96e';
   }
+
+    let mechIdx = 0;
+  const mechImgs = ['c-mech-1','c-mech-2'];
+  const mechDots = ['dot-m-1','dot-m-2'];
+  function MechCarousel(dir) {
+    document.getElementById(mechImgs[mechIdx]).style.display = 'none';
+    document.getElementById(mechDots[mechIdx]).style.background = '#7a6438';
+    mechIdx = (mechIdx + dir + gearImgs.length) % mechImgs.length;
+    document.getElementById(mechImgs[mechIdx]).style.display = 'block';
+    document.getElementById(mechDots[mechIdx]).style.background = '#c8a96e';
+  }
+  
 </script>
 </html>
