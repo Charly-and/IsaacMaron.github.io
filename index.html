@@ -485,7 +485,7 @@ function closeLightbox() {
     let capIdx = 0;
     const capImgs = ['c-cap-1','c-cap-2'];
     const capDots = ['dot-c-1','dot-c-2'];
-    function capCarousel(dir) {
+    function CapCarousel(dir) {
     document.getElementById(capImgs[capIdx]).style.display = 'none';
     document.getElementById(capDots[capIdx]).style.background = '#7a6438';
     capIdx = (capIdx + dir + capImgs.length) % capImgs.length;
