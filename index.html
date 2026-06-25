@@ -344,18 +344,36 @@
   <div class="proj" id="proj-gearbox">
     <div class="proj-img">
       <div class="img-slot" style="position:absolute;inset:0;">
-        <model-viewer
-          src="gearbox_assembly.glb"
-          alt="Three-stage EV gearbox 3D model"
-          camera-controls
-          auto-rotate
-          auto-rotate-delay="0"
-          rotation-per-second="20deg"
-          shadow-intensity="0"
-          exposure="1"
-          style="width:100%;height:100%;background:#161616;pointer-events:auto;">
-        </model-viewer>
-      </div>
+        <div class="carousel" style="position:relative;width:100%;height:100%;">
+
+          <!-- Slide 1: Wiring diagram -->
+          <img id="c-cap-1" src="Translucent Housing.png"
+               style="width:100%;height:100%;object-fit:contain;display:block;">
+
+          <!-- Slide 2: Interactive 3D model-->
+          <div id="c-cap-2" style="width:100%;height:100%;display:none;background:#161616;">
+            <model-viewer
+              src="gearbox assembly.glb"
+              alt="Three-stage EV gearbox 3D model"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="20deg"
+              shadow-intensity="0"
+              exposure="1"
+              style="width:100%;height:100%;background:#161616;pointer-events:auto;">
+            </model-viewer>
+          </div>
+                    <!-- Nav buttons — z-index:10 keeps them above the model-viewer -->
+          <button onclick="GearCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;">&#8592;</button>
+          <button onclick="GearCarousel(1)"  style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;">&#8594;</button>
+
+          <!-- Dots -->
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;">
+            <span id="dot-g-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+            <span id="dot-g-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+          </div>
+
       <span class="proj-num">04 / 05</span>
     </div>
     <div class="proj-content">
@@ -513,15 +531,25 @@ function closeLightbox() {
     document.getElementById(bridgeDots[bridgeIdx]).style.background = '#c8a96e';
   }
   
-    let capIdx = 0;
-    const capImgs = ['c-cap-1','c-cap-2'];
-    const capDots = ['dot-c-1','dot-c-2'];
-    function CapCarousel(dir) {
+  let capIdx = 0;
+  const capImgs = ['c-cap-1','c-cap-2'];
+  const capDots = ['dot-c-1','dot-c-2'];
+  function CapCarousel(dir) {
     document.getElementById(capImgs[capIdx]).style.display = 'none';
     document.getElementById(capDots[capIdx]).style.background = '#7a6438';
     capIdx = (capIdx + dir + capImgs.length) % capImgs.length;
     document.getElementById(capImgs[capIdx]).style.display = 'block';
     document.getElementById(capDots[capIdx]).style.background = '#c8a96e';
+
+  let gearIdx = 0;
+  const gearImgs = ['c-gear-1','c-gear-2'];
+  const gearDots = ['dot-g-1','dot-g-2'];
+  function GearCarousel(dir) {
+    document.getElementById(gearImgs[gearIdx]).style.display = 'none';
+    document.getElementById(gearDots[gearIdx]).style.background = '#7a6438';
+    gearIdx = (gearIdx + dir + gearImgs.length) % gearImgs.length;
+    document.getElementById(gearImgs[gearIdx]).style.display = 'block';
+    document.getElementById(gearDots[gearIdx]).style.background = '#c8a96e';
   }
 </script>
 </html>
