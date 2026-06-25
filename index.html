@@ -289,18 +289,38 @@
   <!-- 03 CAPSTONE -->
   <div class="proj" id="proj-capstone">
     <div class="proj-img">
-      <div class="img-slot">
-        <div class="img-slot" style="position:absolute;inset:0;">
-          <div class="carousel" style="position:relative;width:100%;height:100%;pointer-events:none;">
-            <img id="c-cap-1" src="Preliminary Wiring Diagram.JPG" style="width:100%;height:100%;object-fit:contain;display:block;">
-            <img id="c-cap-2" src="Fill Latter" style="width:100%;height:100%;object-fit:contain;display:none;">
-            <button onclick="CapCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8592;</button>
-            <button onclick="CapCarousel(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;">&#8594;</button>
-            <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;">
-              <span id="dot-c-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
-              <span id="dot-c-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
-            </div>
+      <div class="img-slot" style="position:absolute;inset:0;">
+        <div class="carousel" style="position:relative;width:100%;height:100%;">
+
+          <!-- Slide 1: Wiring diagram -->
+          <img id="c-cap-1" src="Preliminary Wiring Diagram.png"
+               style="width:100%;height:100%;object-fit:contain;display:block;">
+
+          <!-- Slide 2: Interactive 3D model-->
+          <div id="c-cap-2" style="width:100%;height:100%;display:none;background:#161616;">
+            <model-viewer
+              src="YOUR_MODEL.glb"
+              alt="Wing foil force measurement system 3D assembly"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="20deg"
+              shadow-intensity="0"
+              exposure="1"
+              style="width:100%;height:100%;background:#161616;">
+            </model-viewer>
           </div>
+
+          <!-- Nav buttons — z-index:10 keeps them above the model-viewer -->
+          <button onclick="CapCarousel(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;">&#8592;</button>
+          <button onclick="CapCarousel(1)"  style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(15,15,15,0.7);border:1px solid #c8a96e;color:#c8a96e;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;">&#8594;</button>
+
+          <!-- Dots -->
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;">
+            <span id="dot-c-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
+            <span id="dot-c-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
+          </div>
+
         </div>
       </div>
       <span class="proj-num">03 / 05</span>
@@ -312,7 +332,7 @@
       <div class="highlight">&#128268; In progress — Currently in the prototyping and design phase, with work underway to build the first fully assembled prototype.</div>
       <div class="info-stack">
         <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Design and fabricate a force measuring boom handle that captures rider pulling forces accurately and reliably in a marine environment, while remaining safe and non-intrusive during use.</p></div>
-        <div class="info-row out"><span class="info-label">Client & Motivation</span><p class="info-text">Tagmata currently relies on subjective rider feedback to evaluate wing fabrics. This system replaces guesswork with measured force data, giving their R&amp;D team a defensible basis for material selection and marketing claims.</p></div>
+        <div class="info-row out"><span class="info-label">Client &amp; Motivation</span><p class="info-text">Tagmata currently relies on subjective rider feedback to evaluate wing fabrics. This system replaces guesswork with measured force data, giving their R&amp;D team a defensible basis for material selection and marketing claims.</p></div>
         <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Multi-axis force sensing integrated into a standard boom handle form factor. Data logging for post-session analysis. System designed to survive saltwater, dynamic loading, and the mechanical abuse of active foiling sessions.</p></div>
       </div>
       <div class="tool-tags"><span class="tool-tag">Force sensing</span><span class="tool-tag">Instrumentation</span><span class="tool-tag">Data logging</span><span class="tool-tag">SolidWorks</span><span class="tool-tag">Arduino</span><span class="tool-tag">Structural design</span></div>
@@ -325,8 +345,19 @@
     <div class="proj-img">
       <div class="img-slot">
         <!-- Replace with: <img src="images/gearbox.jpg" alt="EV gearbox CAD"> -->
-        <span class="img-placeholder">[ INSERT IMAGE ]<br>gearbox.jpg</span>
-      </div>
+        <div class="img-slot" style="position:absolute;inset:0;">
+          <model-viewer
+            src="gearbox_assembly.glb"
+            alt="Three-stage EV gearbox 3D model"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="20deg"
+            shadow-intensity="0"
+            exposure="1"
+            style="width:100%;height:100%;background:#161616;">
+          </model-viewer>
+        </div>
       <span class="proj-num">04 / 05</span>
     </div>
     <div class="proj-content">
@@ -414,7 +445,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>Isaac Maron &mdash; B.Eng Mechanical Engineering, UVic 2025</span>
+  <span>Isaac Maron &mdash; B.Eng Mechanical Engineering, UVic 2026</span>
   <span>Victoria, BC</span>
 </footer>
     
