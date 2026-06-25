@@ -248,7 +248,7 @@
             <span id="dot-m-1" style="width:6px;height:6px;border-radius:50%;background:#c8a96e;display:block;"></span>
             <span id="dot-m-2" style="width:6px;height:6px;border-radius:50%;background:#7a6438;display:block;"></span>
           </div>
-        </video>
+        </div>
       </div>
       <span class="proj-num">01 / 05</span>
     </div>
@@ -567,7 +567,7 @@ function closeLightbox() {
   function MechCarousel(dir) {
     document.getElementById(mechImgs[mechIdx]).style.display = 'none';
     document.getElementById(mechDots[mechIdx]).style.background = '#7a6438';
-    mechIdx = (mechIdx + dir + gearImgs.length) % mechImgs.length;
+    mechIdx = (mechIdx + dir + mechImgs.length) % mechImgs.length;
     document.getElementById(mechImgs[mechIdx]).style.display = 'block';
     document.getElementById(mechDots[mechIdx]).style.background = '#c8a96e';
   }
