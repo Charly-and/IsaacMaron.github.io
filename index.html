@@ -487,8 +487,8 @@ function closeLightbox() {
     const capDots = ['dot-c-1','dot-c-2'];
     function capCarousel(dir) {
     document.getElementById(capImgs[capIdx]).style.display = 'none';
-    document.getElementById(capeDots[capIdx]).style.background = '#7a6438';
-    CapIdx = (capIdx + dir + capImgs.length) % capImgs.length;
+    document.getElementById(capDots[capIdx]).style.background = '#7a6438';
+    capIdx = (capIdx + dir + capImgs.length) % capImgs.length;
     document.getElementById(capImgs[capIdx]).style.display = 'block';
     document.getElementById(capDots[capIdx]).style.background = '#c8a96e';
   }
