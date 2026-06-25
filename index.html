@@ -44,9 +44,9 @@
 
   /* HERO */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 5rem 3.5rem; border-right: 1px solid var(--border); }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 3.5rem; border-right: 1px solid var(--border); }
   .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
-  .eyebrow::before { display: none; }
+  .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
   .hero-name { font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 3rem; }
   .hero-name .surname { display: block; color: var(--gold); font-weight: 600; }
   .hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 420px; margin-bottom: 2.5rem; }
@@ -180,7 +180,7 @@
 </nav>
 
 <!-- HERO -->
-<div id="top" style="padding-top:10px;">
+<div id="top">
 <div class="hero">
   <div class="hero-left">
     <div class="eyebrow">Mechanical Engineering Student &mdash; B.Eng, UVic</div>
@@ -375,6 +375,7 @@
           </div>
         </div>
       </div>
+    </div>
       <span class="proj-num">04 / 05</span>
     </div><!-- /proj-img -->
     <div class="proj-content">
