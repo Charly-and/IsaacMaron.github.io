@@ -44,9 +44,9 @@
 
   /* HERO */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 3.5rem; border-right: 1px solid var(--border); }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 5rem 3.5rem; border-right: 1px solid var(--border); }
   .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
-  .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .eyebrow::before { display: none; }
   .hero-name { font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 3rem; }
   .hero-name .surname { display: block; color: var(--gold); font-weight: 600; }
   .hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 420px; margin-bottom: 2.5rem; }
@@ -180,7 +180,7 @@
 </nav>
 
 <!-- HERO -->
-<div id="top" style="padding-top:60px;">
+<div id="top" style="padding-top:10px;">
 <div class="hero">
   <div class="hero-left">
     <div class="eyebrow">Mechanical Engineering Student &mdash; B.Eng, UVic</div>
@@ -415,9 +415,9 @@
     <div class="proj-content">
       <div class="proj-meta"><span class="cat-badge">Mechanism Design</span><span class="proj-yr">2025</span></div>
       <h2 class="proj-title">Motorised Retractable Bridge &mdash; MECH 350</h2>
-      <p class="proj-what">Motorised bridge constrained to an 11-inch height envelope, spanning 32 inches and clearing 22 inches on retraction while supporting a 2 kg live load with vehicle passage.</p>
+      <p class="proj-what"> add text..............</p>
       <div class="info-stack">
-        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Symmetric, predictable extension within tight height constraint. Maximum mechanical advantage at full extension. Support 2 kg live load via bidirectional motor control.</p></div>
+        <div class="info-row obj"><span class="info-label">Objectives</span><p class="info-text">Construct a working bridge prototype constrained to an 11-inch height envelope, spanning 32 inches and clearing 22 inches on retraction while supporting a 2 kg live load with "vehicle" passage.</p></div>
         <div class="info-row tech"><span class="info-label">Technical Details</span><p class="info-text">Reverse double four-bar linkage with 1:1 gear-coupled chassis. DC motor to custom gear reduction to cable spool through eyelets. 6 mm birch plywood, laser-cut gears, steel shaft pivots, 3D-printed pins.</p></div>
       </div>
       <div class="tool-tags"><span class="tool-tag">Four-bar linkage</span><span class="tool-tag">Gear design</span><span class="tool-tag">Laser cutting</span><span class="tool-tag">3D printing</span><span class="tool-tag">DC motor</span><span class="tool-tag">Cable drive</span><span class="tool-tag">SolidWorks</span></div>
@@ -432,7 +432,7 @@
   <div class="about-left">
     <h2>Building things that work the way <em>physics</em> says they should.</h2>
     <div class="about-body">
-      <p>I'm a mechanical engineering student at the University of Victoria, graduating August 2025 with specialisations in Mechatronics and Energy Systems.</p>
+      <p>I'm a mechanical engineering student at the University of Victoria, graduating August 2026 with specialisations in Mechatronics and Energy Systems.</p>
       <p>My work sits at the intersection of physical design and computational analysis — equally comfortable writing Python thermodynamic models as building and testing a four-bar linkage on the bench.</p>
       <p>I'm drawn to problems where the answer isn't obvious at the start: build the model, question the assumptions, and iterate until the physics agrees.</p>
       <p>Outside engineering, I helped build and run the UVic Aero club's web presence, which taught me that communicating technical work clearly is just as important as doing it.</p>
